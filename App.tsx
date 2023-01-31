@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, Button, FlatList, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {Alert, Button, FlatList, SafeAreaView, StyleSheet, Text , View} from 'react-native';
 
 function App() {
  const jsarray = ["PHP","Java","React","c#"];
@@ -7,9 +7,9 @@ function App() {
 
   const ui = (
     <SafeAreaView style={styles.main}>
-      <Text style={styles.text}>Load Data</Text>
+      <Text style={styles.text}>SQL Load Data</Text>
      
-      <Button title="Load Data"  onPress={n} />
+      <Button title=" Load Data"  onPress={n} />
 
       <FlatList data={x} renderItem={m}/>
 
@@ -68,7 +68,17 @@ function App() {
 
 function m({item}){
   const itemui =(
-<Text >{item}</Text>
+    <View style = {styles.view1}>
+
+      <View style = {styles.circle}>
+        <Text style={styles.text3}>{item.substring(0,1)}</Text>
+
+      </View>
+
+      <Text style={styles.text2}>{item}</Text>
+
+
+    </View>
   );
   return itemui;
 }
@@ -87,4 +97,31 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingVertical: 20,
   },
+
+  circle:{
+    width:48,
+    height:48,
+    backgroundColor:"grey",
+    borderRadius:50,
+  },
+
+  text2: {
+    fontSize: 20,
+   
+  },
+
+  text3: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingHorizontal: 15,
+  },
+
+  view1: {
+    flexDirection:"row",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    columnGap:10,
+    padding:10,
+    
+  }, 
 });
