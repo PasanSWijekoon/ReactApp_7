@@ -18,22 +18,48 @@ function App() {
 
   function n(){
 
-    var request = new XMLHttpRequest();
-    request.onreadystatechange=function(){
-      if (request.readyState==4&&request.status==200){
+
+    var requestContent = {method:"GET"};
+
+    fetch("http://10.0.2.2/React_php1/index.php",requestContent)
+   .then(response=>{return response.json();})
+   .then(json=>{setX(json.names);})
+    .catch(error=>{Alert.alert('Error',error);});
+
+
+  //  .then(p)
+    //.then(q)
+   // .catch(r);
+
+   // var request = new XMLHttpRequest();
+   // request.onreadystatechange=function(){
+      //if (request.readyState==4&&request.status==200){
     
-        var json = request.responseText;
-        var JS_object = JSON.parse(json);
-        setX(JS_object.names);
+       // var json = request.responseText;
+       // var JS_object = JSON.parse(json);
+       // setX(JS_object.names);
+    //
+     // }
     
-      }
+    //};
     
-    };
-    
-    request.open("GET","http://10.0.2.2/React_php1/index.php",true);
-    request.send();
+    //request.open("GET","http://10.0.2.2/React_php1/index.php",true);
+   // request.send();
     
     }
+
+   // function p(response){
+    // return response.json();
+   // }
+
+  // function q(json){
+  //    setX(json.names);
+  // }
+
+  //  function r(error){
+   //  Alert.alert('Error',error);
+   // }
+
 
   return ui;
 }
